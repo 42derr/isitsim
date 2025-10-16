@@ -1,6 +1,3 @@
-// HDFS File Merge Program
-// This program merges two input files stored in HDFS into a single output file.
-
 import java.io.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;

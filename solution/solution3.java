@@ -78,7 +78,7 @@ public class solution3 {
             );
 
             result.set(stats);
-            context.write(NullWritable.get(), result); // null key avoids extra space
+            context.write(NullWritable.get(), result);
         }
     }
 
@@ -93,12 +93,11 @@ public class solution3 {
         Job job = Job.getInstance(conf, "MinMax Extended");
         job.setJarByClass(solution3.class);
         job.setMapperClass(TokenizerMapper.class);
-        // combiner removed to avoid class mismatch
         job.setReducerClass(StatsReducer.class);
 
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(IntWritable.class);
-        job.setOutputKeyClass(NullWritable.class); // null key
+        job.setOutputKeyClass(NullWritable.class);
         job.setOutputValueClass(Text.class);
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
